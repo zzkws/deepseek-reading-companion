@@ -12,6 +12,16 @@ Chrome 扩展 · 网页与 PDF · 原文上下文 · 就地追问 · Kokoro 本�
 
 </div>
 
+## 伴读一览
+
+<p align="center">
+  <a href="docs/posters/01-context-reading.png"><img src="docs/posters/01-context-reading.png" width="30%" alt="网页划词：读到哪里，就在原文旁理解到哪里"></a>
+  <a href="docs/posters/02-pdf-reading.png"><img src="docs/posters/02-pdf-reading.png" width="30%" alt="论文 PDF：读论文，理解不离开原文"></a>
+  <a href="docs/posters/03-local-pronunciation.png"><img src="docs/posters/03-local-pronunciation.png" width="30%" alt="本地发音：看懂它，也听见它"></a>
+</p>
+
+<p align="center"><sub>宣传海报为界面示意；点击查看大图，实际使用画面见下方截图。</sub></p>
+
 ## 阅读场景：一个术语，放回这一段
 
 技术文章里的词未必难，难的是它在这一段里指什么。下面这段文字讨论模型答案附带的概率与置信度：选中 `calibrated probabilities`，伴读卡片先给出“校准概率”的含义，再说明它与原文所述答案的关系。解释留在选区旁边，读完就能接着看下一行。
