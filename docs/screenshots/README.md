@@ -1,18 +1,6 @@
-# 界面截图
+# 当前产品截图
 
-`companion-dark.png` 是 DeepSeek 伴读当前深色界面的示意，使用示例回答展示排版与聚焦状态。
+- `web-selection.png`：网页选词后的 DeepSeek 解释与 Kokoro 发音入口。
+- `web-follow-up.png`：同一张阅读卡片中的解释与追问入口。
 
-这些截图记录改名前的界面与输出格式，当前 DeepSeek 伴读的界面以源码构建结果为准。
-
-历史截图文件与场景：
-
-| 文件名 | 演示的场景 |
-|---|---|
-| `hyper-connections.png` | 专业名词 |
-| `residual.png` | 知道意思但记不牢 |
-| `dramatic-leap.png` | 地道表达 |
-| `flops.png` | 缩写与行话 |
-
-可选补充：`grpo.png`、`indexer.png`。
-
-建议在 [DeepSeek-V4 技术报告](https://arxiv.org/html/2606.19348v1) 上截，深色模式，只保留浮层和它周围的正文。
+这两张图片来自实际产品界面，用于 README。早期固定回答模板的截图保存在 [`../archive/screenshots/`](../archive/README.md)。

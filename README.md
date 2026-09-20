@@ -1,98 +1,70 @@
 <div align="center">
 
-<img src="public/icons/icon128.png" width="80" alt="DeepSeek 伴读">
+<img src="public/icons/icon128.png" width="76" alt="DeepSeek 伴读图标">
 
 # DeepSeek 伴读
 
-**围绕 DeepSeek 模型能力与设计风格制作的阅读插件。**
+**选中英文，沿着原文读懂它。**
 
-谨以此作品，表达本人对 deepseek 的喜爱之情。
+在网页或 PDF 里划选词句，DeepSeek 结合前后文给出直接的中文理解；留在原处追问，或听 Kokoro 读出选中的英文。
 
-阅读英文网页或 PDF 时，选中词句，让 DeepSeek 结合前后文，沿着原文直接给出理解。
-
-Chrome 扩展 · 网页与 PDF · 自备 DeepSeek API Key · 本地历史
+Chrome 扩展 · 英文网页与 PDF · DeepSeek 上下文解释 · Kokoro 本地发音
 
 </div>
 
-## 沿着原文，陪你读
+![网页中选中 calibrated probabilities，伴读卡片在原文旁给出中文解释](docs/screenshots/web-selection.png)
 
-DeepSeek 伴读把 DeepSeek 放在正在阅读的文字旁边。回答沿用原文的对象、术语、主语和论述顺序，保留原文的限定与确定性；用自然的中文说明选中内容在这里的含义。没有默认的英文释义、词源栏目或固定输出模板。
+## 它怎样陪你读
 
-模型接收前文与选区之后约 1000 字符的内容。继续提问时，同一张卡片带着上下文和之前的对话接着回答。
+**贴着原文解释。** 选中词、短语或句子，回答沿用原文的对象、术语、主语和论述顺序，保留必要的限定与确定性。它用自然中文说明选中内容在当前位置的含义，篇幅随内容变化。继续在卡片中追问，DeepSeek 会接着当前原文和对话回答。
 
-界面参考 DeepSeek 的蓝色、简洁层次和圆角设计：灰色 PDF 阅读区、清晰的正文、紧凑的对话卡片。输入时聚焦光环沿卡片外轮廓展开；标题与追问的“问”保持同一条左对齐线，关闭图标与发送箭头保持同一条右侧中心线。
+**让选区更完整。** 网页和 PDF 都会补齐漏选的单词边界。PDF 阅读器按栏和段落整理文字，并合并排版造成的跨行断词；从 `detec- / tion` 划到的词会按 `detection` 进入解释。涉及图表或公式的 PDF 查询，可把相关页图像一同提供给支持视觉输入的模型。
 
-![DeepSeek 伴读界面示意，使用示例回答展示聚焦状态](docs/screenshots/companion-dark.png)
+**听见选中的英文。** 词旁的扬声器使用 Kokoro Q8 的美式 Heart 音色，在本机生成声音。可以选择点击后生成，或选中后预先生成、点击时播放；音量可单独调节。首次安装会自动下载约 92 MB 的量化模型并缓存，此后发音可离线使用。发音支持最长 240 个字符的英文词句。
 
-## 阅读体验
+![网页中选中 Verifiable problems，并在同一张卡片中查看解释与追问入口](docs/screenshots/web-follow-up.png)
 
-- **完整选词**：自动补齐首尾漏选的英文字母，支持多个单词和反向拖选，并同步高亮。
-- **连续的 PDF 文本**：按栏与段落整理文字，合并排版断词；例如跨行的 `detec- / tion` 会以 `detection` 解释。
-- **自然追问**：在底部输入问题，按 Enter 或发送按钮，沿当前上下文继续阅读。
-- **图文上下文**：PDF 的 Flash 查询可携带当前页及此前可识别图注所在页的图像，最多最近 12 个相关页。Pro 查询保持文本输入。
-- **本地历史**：保存最近 200 次对话，可以搜索并回到原文。
-- **深浅主题**：界面随系统主题切换，PDF 纸张周围保持中性灰色。
-- **本地发音**：选中词句旁提供 Kokoro Q8 美式 Heart 发音；安装后自动下载约 92 MB 量化语音包，校验后缓存，之后可离线播放。
-- **发音触发**：设置中可选择点击按钮播放，或选中后自动在后台生成并缓存（实际播放仍由按钮触发，兼容浏览器自动播放策略）。
-- **发音音量**：设置中可单独调节 Kokoro 发音音量，不影响网页或 PDF 的其他声音。
+对话历史保存在浏览器本地，最多保留最近 200 条；可以搜索并返回原文。界面随系统切换深浅主题，PDF 阅读区使用中性灰背景。
 
 ## 安装
 
-从源码构建：
+需要 Chrome 116 或更新版本，以及自己的 [DeepSeek API Key](https://platform.deepseek.com/api_keys)。
+
+1. 从[最新版本](https://github.com/zzkws/SideNote/releases/latest)下载 `deepseek-reading-companion.zip`，解压到固定目录。
+2. 打开 `chrome://extensions`，开启开发者模式，点击「加载已解压的扩展程序」，选择解压后的目录。
+3. 在自动打开的设置页填入 API Key，测试连接并保存。语音包会自动下载，进度可在设置页查看。
+4. 在英文网页中划词；阅读论文时，从扩展菜单打开 PDF 阅读器，把 PDF 拖入页面。
+
+升级时用新版本文件替换原安装目录，在 `chrome://extensions` 点击重新加载，并刷新已打开的阅读页面。
+
+也可以从源码构建：
 
 ```bash
-git clone https://github.com/zzkws/SideNote.git deepseek-reading-companion
-cd deepseek-reading-companion
+git clone https://github.com/zzkws/SideNote.git
+cd SideNote
 npm ci
 npm run build
 ```
 
-1. 在 Chrome 打开 `chrome://extensions`，开启开发者模式。
-2. 点击“加载已解压的扩展程序”，选择项目中的 `dist` 文件夹。
-3. 在设置页填入自己的 [DeepSeek API Key](https://platform.deepseek.com/api_keys)，测试连接并保存。
-4. 打开英文网页划选词句；阅读 PDF 时，点击扩展菜单中的“打开 PDF 阅读器”。
+然后在 `chrome://extensions` 加载项目生成的 `dist/`。`npm run zip` 可生成安装压缩包。
 
-首次安装会在后台从 GitHub 下载 Kokoro Q8 语音包（Hugging Face 为备用源），设置页会显示进度。语音包只保存到浏览器本地，选中文字不会上传给发音引擎。
+## 数据与适用范围
 
-本地打包使用 `npm run zip`，生成 `deepseek-reading-companion.zip`。[Releases](https://github.com/zzkws/SideNote/releases) 中的历史安装包可能仍使用旧名称 `sidenote.zip`。
+- 解释与追问需要联网。选中内容、所需前后文，以及 PDF 查询涉及的页图会发送到设置中的 API 地址，默认是 DeepSeek；API 用量由你的账户承担。
+- API Key 与对话历史保存在本机 `chrome.storage.local`。Kokoro 模型从 [GitHub 模型发布页](https://github.com/zzkws/SideNote/releases/tag/kokoro-v1.0-q8)下载，Hugging Face 为备用源；模型文件经过 SHA-256 校验。发音文本在本机处理。
+- PDF 文字层采用版面规则恢复。扫描件没有可选择的文字层时暂不能直接划词；复杂公式、表格和特殊排版仍应结合原页核对。网页 iframe 内的选区暂不支持。
 
-更新已有安装时，重新加载同一目录的扩展并刷新阅读页面；设置和历史的存储格式沿用原有实现。
+更详细的上下文策略、页图选择与验证方式见[阅读链路](docs/reading-pipeline.md)，回答约束见[提示词源码](src/background/prompt.ts)。
 
-## 上下文与模型
+## 项目与许可
 
-普通查询发送从文章开头到选区之后约 1000 字符的正文，末尾尽量扩展到句子或段落边界。超长正文超过 160000 字符的阈值时，保留开头和选区附近内容，并标明省略部分。
+这是围绕 DeepSeek 模型能力与视觉风格制作的独立开源作品，非 DeepSeek 官方产品。谨以此作品，表达本人对 DeepSeek 的喜爱之情。
 
-PDF 图注独立整理，避免插入正文的跨栏、跨页句子。页图用于核对图表和公式排布。当前代码在带图的 Flash 请求中使用 `deepseek-v4-flash-vision-exp`，纯文本查询使用设置中的模型。页图会增加输入用量，具体可用型号与费用以 DeepSeek 接口为准。
+项目源码采用 [MIT 许可证](LICENSE)。本地发音组件和模型保留各自的许可，详见[第三方许可说明](THIRD_PARTY_NOTICES.md)。仓库沿用原 SideNote 地址；早期固定模板的[回答样例与截图](docs/archive/README.md)、[海报实验](poster/README.md)仅作历史留存。
 
-API Key 保存在本机 `chrome.storage.local`；调用时用于向配置的 API 地址认证。选中内容、所需上下文及相关页图会发送到该地址，默认是 DeepSeek。历史保存在浏览器本地。
+<details>
+<summary>English</summary>
 
-PDF 文字恢复采用版面规则。复杂公式、表格及特殊排版需结合原图；扫描件没有可划选文字层时暂不支持直接划词。网页 iframe 内的选区暂不支持。
+DeepSeek 伴读 is an independent Chrome reading companion for English webpages and PDFs. Select a word or passage for a Chinese explanation grounded in the surrounding text, ask follow-up questions in place, and play local English pronunciation with Kokoro Q8. Bring your own DeepSeek API key. Explanations require a network connection; pronunciation works offline after the first model download.
 
-实现与验证说明见 [阅读链路](docs/reading-pipeline.md)。回答风格在 [prompt.ts](src/background/prompt.ts) 中集中维护。
-
-## 开发
-
-```bash
-npm run dev      # 开发模式
-npm run build    # TypeScript 检查并构建到 dist/
-npm run zip      # 生成安装压缩包
-npm run icons    # 重新生成图标
-```
-
-技术栈：Manifest V3、TypeScript、Preact、Vite、PDF.js、Readability、KaTeX。无须额外后端即可使用自己的 API Key。
-
-本地语音运行时由 Kokoro、Transformers.js、ONNX Runtime Web 和 phonemizer.js 组成；各组件许可及固定版本见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。Q8 模型数据使用固定 revision 并在下载后校验 SHA-256，不把 92 MB 权重放进源码仓库。
-
-仓库沿用原 SideNote 地址。`docs/gold-examples.md`、旧截图和海报是早期设计存档，当前回答规则以代码中的系统提示词为准。
-
-## English
-
-**DeepSeek 伴读 / DeepSeek Reading Companion** is a reading extension built around DeepSeek models and DeepSeek-inspired interface design. Select words or sentences in an English webpage or PDF to receive a direct Chinese explanation grounded in the surrounding text. Continue asking questions in the same card.
-
-Selection boundaries expand to complete English words, including words split across PDF lines. Responses use natural prose without a mandatory English gloss or fixed template. Bring your own DeepSeek API key; conversations are stored locally in your browser.
-
-Build with `npm ci` and `npm run build`, then load `dist/` as an unpacked Chrome extension.
-
-## License
-
-MIT
+</details>
