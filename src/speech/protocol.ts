@@ -4,7 +4,7 @@ export const ENGINE_PORT = "companion-speech-engine";
 export const MODEL_REVISION = "1939ad2a8e416c0acfeecc08a694d14ef25f2231";
 export const MODEL_URL = `https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/${MODEL_REVISION}/onnx/model_quantized.onnx`;
 export const MODEL_SOURCES = [
-  "https://github.com/zzkws/SideNote/releases/download/kokoro-v1.0-q8/model_quantized.onnx",
+  "https://github.com/zzkws/deepseek-reading-companion/releases/download/kokoro-v1.0-q8/model_quantized.onnx",
   MODEL_URL,
 ] as const;
 export const MODEL_BYTES = 92_361_116;
