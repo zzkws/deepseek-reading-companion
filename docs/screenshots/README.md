@@ -1,6 +1,8 @@
-# 当前产品截图
+# 产品界面素材
 
-- `web-selection.png`：网页选词后的 DeepSeek 解释与 Kokoro 发音入口。
-- `web-follow-up.png`：同一张阅读卡片中的解释与追问入口。
+当前 README 使用两张实际阅读场景截图：
 
-这两张图片来自实际产品界面，用于 README。早期固定回答模板的截图保存在 [`../archive/screenshots/`](../archive/README.md)。
+- [`web-selection.png`](web-selection.png)：技术文章中的 `calibrated probabilities`，展示原文旁的解释与发音入口。
+- [`web-follow-up.png`](web-follow-up.png)：使用场景段落中的 `Verifiable problems`，展示上下文解释与追问入口。
+
+后续海报应以这两处真实阅读场景和当前产品界面为依据。
